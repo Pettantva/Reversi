@@ -1,0 +1,34 @@
+package Othello;
+
+public class Othelloboard {
+	private int[][] board;
+	private boolean playersTurn; //false = vit(-1), true = svart(1)
+	private boolean[][] legalMoves;
+	
+	public Othelloboard() {
+		this.board = new int[8][8];
+		this.board[3][3] = -1;
+		this.board[4][4] = -1;
+		this.board[3][4] = 1;
+		this.board[4][3] = 1;
+		this.playersTurn = true;
+		this.legalMoves = set
+	}
+	
+	private void (){
+		
+	}
+	
+	//metod som kollar legal moves och returnerar dem i en matris(true/false)
+	private boolean[][] setLegalMoves(){
+		
+		return boolean 
+	}
+	
+		//kollar om den är okej
+	
+		
+	//metod som lägger ny bit
+		//metod som räknar ut hur nya matrisen ser ut vid
+
+}
