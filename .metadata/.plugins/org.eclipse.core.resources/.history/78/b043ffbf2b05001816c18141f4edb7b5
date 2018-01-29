@@ -1,0 +1,66 @@
+package Othello;
+
+public class Othelloboard {
+	private int[][] board;
+	private int playersTurn; // vit = (-1), svart = (1)
+	private boolean[][] legalMoves; //om det går att lägga på denna plats för nuvarande spelare
+	private int blackPoints;
+	private int whitePoints;
+	
+	public Othelloboard() {
+		this.board = new int[8][8]; //nytt tomt bord
+		setBoard();
+		this.playersTurn = 1; //svart börjar
+		this.legalMoves = new boolean[8][8];  //sätter upp legalmoves
+		setLegalMoves();
+	}
+	//sätter upp bordet. Alla tomma förutomd dem två i mitten.
+	private void setBoard(){
+		for (int i = 0; i < 8; i++){
+			for (int j = 0; j < 8; j++){
+				this.board[i][j] = 0;
+			}
+		}
+		this.board[3][3] = -1;
+		this.board[4][4] = -1;
+		this.board[3][4] = 1;
+		this.board[4][3] = 1;
+		this.blackPoints = 2;
+		this.whitePoints = 2;
+	}
+	
+	//sätter legalMoves i början för svart spelare
+	private void setLegalMoves(){
+		for (int i = 0; i < 8; i++){
+			for (int j = 0; j < 8; j++){
+				this.legalMoves[i][j] = false;
+			}
+		}
+		updateLegalMoves(); //ska göra så svart kan lägga på 4 ställen i detta fall.
+	}
+		
+	//metod som lägger ny bit
+	public boolean put(int i, int j){
+		if(this.legalMoves[i][j] == true){
+			updateBoard(i,j);
+			updateLegalMoves();
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
+	private void updateBoard(int i, int j){
+		this.board[i][j] = playersTurn;
+	}
+	
+	//metod som uppdaterar legal moves
+	private void updateLegalMoves(){
+			
+	}
+	
+	public boolean[][] legalMoves(){
+		return this.legalMoves;
+	}
+}

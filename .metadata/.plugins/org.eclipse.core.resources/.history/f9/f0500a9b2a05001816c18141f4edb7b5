@@ -1,0 +1,10 @@
+package Othello;
+
+public class Main {
+
+	public static void main(String[] args) {
+//kalla på nytt game
+		//Othelloboard board = new Othelloboard(vem som startar);
+	}
+
+}
