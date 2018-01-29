@@ -8,6 +8,7 @@ public class Othelloboard {
 	private int whitePoints;
 	
 	public Othelloboard() {
+<<<<<<< HEAD
 		this.board = new int[8][8]; //nytt tomt bord
 		setBoard();
 		this.playersTurn = 1; //svart börjar
@@ -27,6 +28,10 @@ public class Othelloboard {
 		this.board[4][3] = 1;
 		this.blackPoints = 2;
 		this.whitePoints = 2;
+=======
+		this.board = new int[8][8];
+		int x = 8;
+>>>>>>> 5d948325aa098865feb6e27bd1d5b2096e0f4bc5
 	}
 	
 	//sätter legalMoves i början för svart spelare
@@ -40,6 +45,7 @@ public class Othelloboard {
 	}
 		
 	//metod som lägger ny bit
+<<<<<<< HEAD
 	public boolean put(int i, int j){
 		if(this.legalMoves[i][j] == true){
 			updateBoard(i,j);
@@ -60,4 +66,9 @@ public class Othelloboard {
 			
 	}
 	
+=======
+		//metod som räknar ut hur nya matrisen ser ut vid
+	
+
+>>>>>>> 5d948325aa098865feb6e27bd1d5b2096e0f4bc5
 }
