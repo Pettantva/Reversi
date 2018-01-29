@@ -45,6 +45,7 @@ public class Othelloboard {
 	}
 		
 	//metod som lägger ny bit
+<<<<<<< HEAD
 	public boolean put(int i, int j){
 		if(this.legalMoves[i][j] == true){
 			updateBoard(i,j);
@@ -64,7 +65,10 @@ public class Othelloboard {
 	private void updateLegalMoves(){
 			
 	}
-
+	
+=======
 		//metod som räknar ut hur nya matrisen ser ut vid
 	
+
+>>>>>>> 5d948325aa098865feb6e27bd1d5b2096e0f4bc5
 }
