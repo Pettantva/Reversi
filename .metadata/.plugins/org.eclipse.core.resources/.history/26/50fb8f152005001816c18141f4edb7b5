@@ -1,0 +1,10 @@
+package Othello;
+
+public class Othelloboard {
+	private int[][] board;
+	
+	public Othelloboard() {
+		this.phoneBook = new TreeMap();
+		this.size = 0;
+	}
+}
