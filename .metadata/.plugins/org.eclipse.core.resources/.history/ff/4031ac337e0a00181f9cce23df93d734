@@ -77,10 +77,10 @@ public class Othelloboard {
 	// uppdaterar kolumnen j från rad a till rad b
 	private int[][] updateCol(int[][] uB, int j, int a, int b) {
 		int[][] uBoard = uB;
-		for (int i = a; i <= b; i++) {
-			uBoard[i][j] = this.playersTurn;
-		}
-		return uBoard;
+			for (int i = a; i <= b; i++) {
+				uBoard[i][j] = this.playersTurn;
+			}
+			return uBoard;
 	}
 
 	// uppdaterar rad i från kolumn a till kolumn b
