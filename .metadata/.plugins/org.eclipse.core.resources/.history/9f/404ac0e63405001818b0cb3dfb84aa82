@@ -67,13 +67,12 @@ public class Othelloboard {
 			for(int i = 0; i < 8; i++ ){
 				for(int j = 0; j < 8 ; j++){
 					if(this.board[i][j] == 0){
-						counter = 0;
 						int x = i;
 						int y = j;
 						int[] neighbor = checkNeighbor();		//lägger in alla grannar i en lista
 						for (int nNr: neighbor){
 							int internalCount = 0;
-							switch (nNr){						//
+							switch (nNr){
 								case 1 : if(x > 1 && y > 1){
 											x--;
 											y--;
@@ -92,10 +91,9 @@ public class Othelloboard {
 									
 								}
 							}
-							counter = counter + internalCount; 
-						}
-						if(counter > 0){
-							this.legalMoves[i][j] = true;
+							if(internalCount > 0){
+								this.legalMoves[i][j] = true; 
+							}
 						}
 					}
 				}

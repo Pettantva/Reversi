@@ -29,8 +29,8 @@ public class Othelloboard {
 		this.blackPoints = 2;
 		this.whitePoints = 2;
 =======
-		
-	
+		this.board = new int[8][8];
+		int x = 8;
 >>>>>>> 5d948325aa098865feb6e27bd1d5b2096e0f4bc5
 	}
 	
@@ -63,44 +63,7 @@ public class Othelloboard {
 	
 	//metod som uppdaterar legal moves
 	private void updateLegalMoves(){
-			int counter = 0;
-			for(int i = 0; i < 8; i++ ){
-				for(int j = 0; j < 8 ; j++){
-					if(this.board[i][j] == 0){
-						counter = 0;
-						int x = i;
-						int y = j;
-						int[] neighbor = checkNeighbor();		//lägger in alla grannar i en lista
-						for (int nNr: neighbor){
-							int internalCount = 0;
-							switch (nNr){						//
-								case 1 : if(x > 1 && y > 1){
-											x--;
-											y--;
-											while(this.board[x][y] != playersTurn && this.board[x][y] != 0){
-												if(x > 0 && y > 0){
-													x--;
-													y--;
-												}
-												internalCount ++;
-											}
-											if(this.board[x][y] == 0){
-												internalCount = 0;
-											}
-											
-									
-									
-								}
-							}
-							counter = counter + internalCount; 
-						}
-						if(counter > 0){
-							this.legalMoves[i][j] = true;
-						}
-					}
-				}
-				
-			}
+			
 	}
 	
 =======
