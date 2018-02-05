@@ -43,6 +43,8 @@ public class Othelloboard {
 		}
 		updateLegalMoves(); // ska göra så svart kan lägga på 4 ställen i detta
 							// fall.
+<<<<<<< HEAD
+=======
 	}
 
 	private void changeTurn() {
@@ -51,13 +53,17 @@ public class Othelloboard {
 		} else {
 			playersTurn = -1;
 		}
+>>>>>>> 12146af7f99af2267fc18100b25423c686384b70
 	}
 
 	// metod som lägger ny bit
 	public boolean put(int i, int j) {
 		if (this.legalMoves[i][j] == true) {
 			updateBoard(i, j);
+<<<<<<< HEAD
+=======
 			// changeTurn();
+>>>>>>> 12146af7f99af2267fc18100b25423c686384b70
 			updateLegalMoves();
 			return true;
 		} else {
@@ -113,13 +119,22 @@ public class Othelloboard {
 
 	private ArrayList CheckNeighbors(int x, int y) {
 		ArrayList neighbors = new ArrayList<Integer>();
-		for (int xn = x - 1; xn <= x - 2; xn++) { 
+		for (int xn = x - 1; xn <= x - 2; xn++) { // går igenom x-kordinaterna
 			if (xn >= 0 && xn <= 7) {
-				for (int yn = y + 1; yn <= y + 1; yn++) { 
+				for (int yn = y + 1; yn <= y + 1; yn++) { // går igenom
+															// y_kordinaterna
 					if (yn >= 0 && yn <= 7) {
+<<<<<<< HEAD
 						if (xn != x && yn != y && Math.abs(board[y][x]) > 0) {
-							neighbors.add(10 * x + y); 
-						}								
+							neighbors.add(10 * x + y); // lägger till
+														// kordinaterna i en
+														// lista
+=======
+						if (xn != x && yn != y && abs(getplace(x, y)) > 0) {
+							neighbors.add(xy); // lägger till kordinaterna i en
+												// lista
+>>>>>>> 12146af7f99af2267fc18100b25423c686384b70
+						}
 					}
 				}
 			}
@@ -130,6 +145,7 @@ public class Othelloboard {
 	private ArrayList LegalMoves() {
 		ArrayList legal = new ArrayList<Integer>();
 		int count = 0;
+<<<<<<< HEAD
 		for (int x = 0; x <= 7; x++) {
 			for (int y = 0; y <= 7; y++) {
 				int color = playersTurn;
@@ -155,6 +171,64 @@ public class Othelloboard {
 							break;
 						}
 					}
+=======
+		for (int x = 0; x <= 7; x++) { // går igenom alla kolumner
+			for (int y = 0; y <= 7; y++) { // går igenom alla rader
+				int color = getplace(x, y);
+				ArrayList neighbors = CheckNeighbors(x, y);
+				for (int i = 0; i < neighbors.size(); i++) { // går igenom
+																// listan på
+																// alla grannar
+					int cordinate = (int) neighbors.get(i);
+					int yn = cordinate % 10; // Räknar ut x och y-kordinater
+					int xn = (cordinate - yn) / 10;
+					int xdir = xn - x; // Anger riktning för granne i x-led
+					int ydir = yn - y; // Anger riktning för granne i y-led
+					while (getplace(xn, yn) != color && getplace(xn, yn) != 0) { // går
+																					// igenom
+																					// brickor
+																					// i
+																					// grannens
+																					// rikting
+																					// så
+																					// länge
+																					// brickan
+																					// är
+																					// i
+																					// motståndarens
+																					// färg
+																					// eller
+																					// ingen
+																					// bricka
+						count++;
+						xn = xn + xdir;
+						yn = yn + ydir;
+						if (xn < 0 && xn > 7 && yn < 0 && yn > 7) { // Om
+																	// plasten
+																	// är
+																	// utanför
+																	// spelplanen
+																	// abryts
+																	// loopen
+							break;
+						}
+					}
+					if (getplace(xn, yn) != color && count > 0) { // Om sista
+																	// kollade
+																	// brickan
+																	// är egen
+																	// färg
+																	// läggs
+																	// kordinaterna
+																	// för
+																	// lagligt
+																	// drag i
+																	// listan
+						legal.add(xn);
+						count = 0;
+						break;
+					}
+>>>>>>> 12146af7f99af2267fc18100b25423c686384b70
 				}
 			}
 		}
@@ -170,30 +244,6 @@ public class Othelloboard {
 			legalMoves[y][x] = true;
 		}
 
-	}
-	public void printBoard(){
-		System.out.print("  ");
-		for(int i = 1; i < 9 ; i++){
-			System.out.print(i + " ");
-		}
-		
-		
-		
-		for(int r = 0; r <= 7 ; r++){
-			System.out.println();
-			System.out.print(r + 1 +" ");
-			for(int c = 0; c <= 7; c++){
-				if(board[r][c] == 1){
-					System.out.print("\u25E6" + " ");
-				}
-				else if(board[r][c] == -1){
-					System.out.print("\u2022" + " ");
-				}
-				else{
-					System.out.print("-" +" ");
-				}
-			}
-		}
 	}
 
 	// metod som räknar ut hur nya matrisen ser ut vid

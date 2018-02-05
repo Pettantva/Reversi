@@ -172,16 +172,17 @@ public class Othelloboard {
 
 	}
 	public void printBoard(){
-		System.out.print("  ");
+		System.out.print("   ");
 		for(int i = 1; i < 9 ; i++){
 			System.out.print(i + " ");
 		}
-		
-		
-		
+		System.out.print("   ");
+		for(int j = 1; j < 9 ; j++){
+			System.out.print("_");
+		}
 		for(int r = 0; r <= 7 ; r++){
 			System.out.println();
-			System.out.print(r + 1 +" ");
+			System.out.print(r + 1 + " |");
 			for(int c = 0; c <= 7; c++){
 				if(board[r][c] == 1){
 					System.out.print("\u25E6" + " ");
@@ -190,7 +191,7 @@ public class Othelloboard {
 					System.out.print("\u2022" + " ");
 				}
 				else{
-					System.out.print("-" +" ");
+					System.out.print("- ");
 				}
 			}
 		}
