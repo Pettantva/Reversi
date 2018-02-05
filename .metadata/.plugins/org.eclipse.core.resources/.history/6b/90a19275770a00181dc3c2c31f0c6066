@@ -40,7 +40,7 @@ public class Othelloboard {
 				this.legalMoves[i][j] = false;
 			}
 		}
-		LegalMoves(); //ska göra så svart kan lägga på 4 ställen i detta fall.
+		updateLegalMoves(); //ska göra så svart kan lägga på 4 ställen i detta fall.
 	}
 		
 	//metod som lägger ny bit
