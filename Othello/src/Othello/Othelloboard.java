@@ -43,6 +43,8 @@ public class Othelloboard {
 		}
 		updateLegalMoves(); // ska göra så svart kan lägga på 4 ställen i detta
 							// fall.
+<<<<<<< HEAD
+=======
 	}
 
 	private void changeTurn() {
@@ -51,13 +53,17 @@ public class Othelloboard {
 		} else {
 			playersTurn = -1;
 		}
+>>>>>>> 12146af7f99af2267fc18100b25423c686384b70
 	}
 
 	// metod som lägger ny bit
 	public boolean put(int i, int j) {
 		if (this.legalMoves[i][j] == true) {
 			updateBoard(i, j);
+<<<<<<< HEAD
+=======
 			// changeTurn();
+>>>>>>> 12146af7f99af2267fc18100b25423c686384b70
 			updateLegalMoves();
 			return true;
 		} else {
@@ -118,19 +124,54 @@ public class Othelloboard {
 				for (int yn = y + 1; yn <= y + 1; yn++) { // går igenom
 															// y_kordinaterna
 					if (yn >= 0 && yn <= 7) {
+<<<<<<< HEAD
+						if (xn != x && yn != y && Math.abs(board[y][x]) > 0) {
+							neighbors.add(10 * x + y); // lägger till
+														// kordinaterna i en
+														// lista
+=======
 						if (xn != x && yn != y && abs(getplace(x, y)) > 0) {
 							neighbors.add(xy); // lägger till kordinaterna i en
 												// lista
+>>>>>>> 12146af7f99af2267fc18100b25423c686384b70
 						}
 					}
 				}
 			}
 		}
+		return neighbors;
 	}
 
 	private ArrayList LegalMoves() {
 		ArrayList legal = new ArrayList<Integer>();
 		int count = 0;
+<<<<<<< HEAD
+		for (int x = 0; x <= 7; x++) {
+			for (int y = 0; y <= 7; y++) {
+				int color = playersTurn;
+				if (board[y][x] != 0) {
+					ArrayList neighbors = CheckNeighbors(x, y);
+					for (int i = 0; i < neighbors.size(); i++) {
+						int cordinate = (int) neighbors.get(i);
+						int yn = cordinate % 10;
+						int xn = (cordinate - yn) / 10;
+						int xdir = xn - x;
+						int ydir = yn - y;
+						while (board[yn][xn] != color && board[yn][xn] != 0) {
+							count++;
+							xn = xn + xdir;
+							yn = yn + ydir;
+							if (xn < 0 && xn > 7 && yn < 0 && yn > 7) {
+								break;
+							}
+						}
+						if (board[yn][xn] != color && count > 0) {
+							legal.add(xn);
+							count = 0;
+							break;
+						}
+					}
+=======
 		for (int x = 0; x <= 7; x++) { // går igenom alla kolumner
 			for (int y = 0; y <= 7; y++) { // går igenom alla rader
 				int color = getplace(x, y);
@@ -187,10 +228,22 @@ public class Othelloboard {
 						count = 0;
 						break;
 					}
+>>>>>>> 12146af7f99af2267fc18100b25423c686384b70
 				}
-				return legal;
 			}
 		}
+		return legal;
+	}
+
+	private void updateLegalMoves() {
+		ArrayList legal = LegalMoves();
+		for(int i = 0; i < legal.size() ; i++){
+			int cordinate = (int) legal.get(i);
+			int y = cordinate % 10;
+			int x = (cordinate - y) / 10;
+			legalMoves[y][x] = true;
+		}
+
 	}
 
 	// metod som räknar ut hur nya matrisen ser ut vid
