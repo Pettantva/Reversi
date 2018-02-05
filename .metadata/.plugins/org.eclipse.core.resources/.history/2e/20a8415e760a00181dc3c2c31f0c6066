@@ -27,8 +27,13 @@ public class Othelloboard {
 		this.board[4][3] = 1;
 		this.blackPoints = 2;
 		this.whitePoints = 2;
-
-
+<<<<<<< HEAD
+=======
+		
+	
+>>>>>>> 5d948325aa098865feb6e27bd1d5b2096e0f4bc5
+=======
+>>>>>>> 9f189ba9caa722098ffad3a17856e6ae4babe748
 	}
 	
 	//sätter legalMoves i början för svart spelare
