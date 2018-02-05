@@ -8,7 +8,6 @@ public class Othelloboard {
 	private int whitePoints;
 	
 	public Othelloboard() {
-<<<<<<< HEAD
 		this.board = new int[8][8]; //nytt tomt bord
 		setBoard();
 		this.playersTurn = 1; //svart börjar
@@ -28,10 +27,13 @@ public class Othelloboard {
 		this.board[4][3] = 1;
 		this.blackPoints = 2;
 		this.whitePoints = 2;
+<<<<<<< HEAD
 =======
 		
 	
 >>>>>>> 5d948325aa098865feb6e27bd1d5b2096e0f4bc5
+=======
+>>>>>>> 9f189ba9caa722098ffad3a17856e6ae4babe748
 	}
 	
 	//sätter legalMoves i början för svart spelare
@@ -45,7 +47,6 @@ public class Othelloboard {
 	}
 		
 	//metod som lägger ny bit
-<<<<<<< HEAD
 	public boolean put(int i, int j){
 		if(this.legalMoves[i][j] == true){
 			updateBoard(i,j);
@@ -58,9 +59,49 @@ public class Othelloboard {
 	}
 	
 	private void updateBoard(int i, int j){
-		this.board[i][j] = playersTurn;
+		int[][] updatedBoard = this.board;
+		for(int a = 7; a > j; j--){
+			//if(board[i][a] = )
+		}
+		
+		
+		this.board = updatedBoard;
+	}
+	//uppdaterar kolumnen j från rad a till rad b
+	private int[][] updateCol(int[][] uB, int j, int a, int b){
+		int[][] uBoard = uB;
+		for(int i = a; i <= b; i++){
+			uBoard[i][j] = this.playersTurn;
+		}
+		return uBoard;
 	}
 	
+	//uppdaterar rad i från kolumn a till kolumn b
+	private int[][] updateRow(int[][] uB, int i, int a, int b){
+		int[][] uBoard = uB;
+		for(int j = a; j <= b; j++){
+			uBoard[i][j] = this.playersTurn;
+		}
+		return uBoard;
+	}
+	
+	//uppdaterar diagonalen från uppe vänster till nere höger ia,ja till ib,jb
+	private int[][] updateDiagHlLr(int[][] uB, int i, int j, int f){
+		int[][] uBoard = uB;
+		for(int r = i; r <= i + f; r++){
+			int c = j;
+			uBoard[r][c] = this.playersTurn;
+			c++;
+		}
+		return uBoard;
+	}
+	
+	//uppdaterar diagonalen från uppe höger till nere vänster ia,ja till ib,jb
+		private int[][] updateDiagHrLl(int[][] uB, int ia, int ib, int ja, int jb){
+			int[][] uBoard = uB;
+			return uBoard;
+		}
+		
 	//metod som uppdaterar legal moves
 	private void updateLegalMoves(){
 			int counter = 0;
@@ -102,10 +143,7 @@ public class Othelloboard {
 				
 			}
 	}
-	
-=======
+
 		//metod som räknar ut hur nya matrisen ser ut vid
 	
-
->>>>>>> 5d948325aa098865feb6e27bd1d5b2096e0f4bc5
 }
