@@ -46,21 +46,19 @@ public class Othelloboard {
 	}
 
 	private void changeTurn() {
-		if (playersTurn == 1) {
-			playersTurn = -1;
-		} else {
+		if (playersTurn == -1) {
 			playersTurn = 1;
+		} else {
+			playersTurn = -1;
 		}
 	}
 
 	// metod som lägger ny bit
 	public boolean put(int i, int j) {
 		if (this.legalMoves[i][j] == true) {
-			this.board[i][j] = this.playersTurn;
 			updateBoard(i, j);
-			changeTurn();
+			// changeTurn();
 			updateLegalMoves();
-			updatePoints();
 			return true;
 		} else {
 			return false;
@@ -69,154 +67,14 @@ public class Othelloboard {
 
 	private void updateBoard(int i, int j) {
 		int[][] updatedBoard = this.board;
-		if(i != 0 && i != 1){ //upp
-			if(this.board[i-1][j] != 0){
-				int a = i - 1;
-				boolean cont = true;
-				while(a >= 0 && cont){
-					int val = this.board[a][j];
-					if(val == 0){
-						cont = false;
-					}
-					else if(val == this.playersTurn){
-						updatedBoard = updateCol(updatedBoard, j, a, i);
-					}
-					a--;
-				}
-			}
+		for (int a = 7; a > j; j--) {
+			// if(board[i][a] = )
 		}
-		if(i != 7 && i != 6){ //ner
-			if(this.board[i+1][j] != 0){
-				int a = i + 1;
-				boolean cont = true;
-				while(a <= 7 && cont){
-					int val = this.board[a][j];
-					if(val == 0){
-						cont = false;
-					}
-					else if(val == this.playersTurn){
-						updatedBoard = updateCol(updatedBoard, j, i, a);
-					}
-					a++;
-				}
-			}
-		}
-		if(j != 0 && j != 1){ // vänster
-			if(this.board[i][j-1] != 0){
-				int a = j - 1;
-				boolean cont = true;
-				while(a >= 0 && cont){
-					int val = this.board[i][a];
-					if(val == 0){
-						cont = false;
-					}
-					else if(val == this.playersTurn){
-						updatedBoard = updateRow(updatedBoard, i, a, j);
-					}
-					a--;
-				}
-			}
-		}
-		if(j != 7 && j != 6){ //höger
-			if(this.board[i][j+1] != 0){
-				int a = j + 1;
-				boolean cont = true;
-				while(a <= 7 && cont){
-					int val = this.board[i][a];
-					if(val == 0){
-						cont = false;
-					}
-					else if(val == this.playersTurn){
-						updatedBoard = updateRow(updatedBoard, i, j, a);
-					}
-					a++;
-				}
-			}	
-		}
-		if(j != 7 && j != 6 && i != 7 && i != 6){ // nerhöger
-			if(this.board[i+1][j+1] != 0){
-				int a = i + 1;
-				int b = j + 1;
-				int f = 1;
-				boolean cont = true;
-				while(a <= 7 && b <= 7 && cont){
-					int val = this.board[a][b];
-					if(val == 0){
-						cont = false;
-					}
-					else if(val == this.playersTurn){
-						updatedBoard = updateDiagHlLr(updatedBoard, i, j, f);
-						f++;
-					}
-					a++;
-					b++;
-				}
-			}
-		}
-		if(j != 0 && j != 1 && i != 0 && i != 1){ // uppvänster
-			if(this.board[i-1][j-1] != 0){
-				int a = i - 1;
-				int b = j - 1;
-				int f = 1;
-				boolean cont = true;
-				while(a >= 0 && b >= 0 && cont){
-					int val = this.board[a][b];
-					if(val == 0){
-						cont = false;
-					}
-					else if(val == this.playersTurn){
-						updatedBoard = updateDiagHlLr(updatedBoard, a, b, f);
-						f++;
-					}
-					a--;
-					b--;
-				}
-			}
-		}
-		if(j != 7 && j != 6 && i != 0 && i != 1){ // upphöger
-			if(this.board[i-1][j+1] != 0){
-				int a = i - 1;
-				int b = j + 1;
-				int f = 1;
-				boolean cont = true;
-				while(a >= 0 && b <= 7 && cont){
-					int val = this.board[a][b];
-					if(val == 0){
-						cont = false;
-					}
-					else if(val == this.playersTurn){
-						updatedBoard = updateDiagHlLr(updatedBoard, a, b, f);
-						f++;
-					}
-					a--;
-					b++;
-				}
-			}
-		}
-		if(j != 1 && j != 0 && i != 7 && i != 6){ // nervänster
-			if(this.board[i+1][j-1] != 0){
-				int a = i + 1;
-				int b = j - 1;
-				int f = 1;
-				boolean cont = true;
-				while(a <= 7 && b >= 0 && cont){
-					int val = this.board[a][b];
-					if(val == 0){
-						cont = false;
-					}
-					else if(val == this.playersTurn){
-						updatedBoard = updateDiagHlLr(updatedBoard, i, j, f);
-						f++;
-					}
-					a++;
-					b--;
-				}
-			}
-		}
+
 		this.board = updatedBoard;
 	}
 
-	// uppdaterar kolumnen j från rad a (toppen) till rad b(botten)
+	// uppdaterar kolumnen j från rad a till rad b
 	private int[][] updateCol(int[][] uB, int j, int a, int b) {
 		int[][] uBoard = uB;
 		for (int i = a; i <= b; i++) {
@@ -225,7 +83,7 @@ public class Othelloboard {
 		return uBoard;
 	}
 
-	// uppdaterar rad i från kolumn a(vänster) till kolumn b(höger)
+	// uppdaterar rad i från kolumn a till kolumn b
 	private int[][] updateRow(int[][] uB, int i, int a, int b) {
 		int[][] uBoard = uB;
 		for (int j = a; j <= b; j++) {
@@ -234,43 +92,21 @@ public class Othelloboard {
 		return uBoard;
 	}
 
-	// uppdaterar diagonalen från uppe vänster till nere höger, från i,j, plus f steg nertill höger
+	// uppdaterar diagonalen från uppe vänster till nere höger ia,ja till ib,jb
 	private int[][] updateDiagHlLr(int[][] uB, int i, int j, int f) {
 		int[][] uBoard = uB;
-		int c = j;
 		for (int r = i; r <= i + f; r++) {
+			int c = j;
 			uBoard[r][c] = this.playersTurn;
 			c++;
 		}
 		return uBoard;
 	}
 
-	// uppdaterar diagonalen från uppe höger till nere vänster, från i,j plus f steg ner till vänster
-	private int[][] updateDiagHrLl(int[][] uB, int i, int j, int f) {
+	// uppdaterar diagonalen från uppe höger till nere vänster ia,ja till ib,jb
+	private int[][] updateDiagHrLl(int[][] uB, int ia, int ib, int ja, int jb) {
 		int[][] uBoard = uB;
-		int c = j;
-		for (int r = i; r <= i + f; r++) {
-			uBoard[r][c] = this.playersTurn;
-			c--;
-		}
 		return uBoard;
-	}
-	
-	private void updatePoints(){
-		int white = 0;
-		int black = 0;
-		for(int i = 0; i < 8; i++){
-			for(int j = 0; j < 8; j++){
-				if(this.board[i][j] == 1){
-					black++;
-				}
-				else if(this.board[i][j] == -1){
-					white++;
-				}
-			}
-		}
-		this.blackPoints = black;
-		this.whitePoints = white;
 	}
 
 	// metod som uppdaterar legal moves
@@ -347,10 +183,10 @@ public class Othelloboard {
 			System.out.println();
 			System.out.print(r + 1 +" ");
 			for(int c = 0; c <= 7; c++){
-				if(board[r][c] == -1){
+				if(board[r][c] == 1){
 					System.out.print("\u25E6" + " ");
 				}
-				else if(board[r][c] == 1){
+				else if(board[r][c] == -1){
 					System.out.print("\u2022" + " ");
 				}
 				else{
