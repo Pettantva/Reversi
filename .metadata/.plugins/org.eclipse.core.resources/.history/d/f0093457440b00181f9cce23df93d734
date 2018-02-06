@@ -10,11 +10,10 @@ public class Main {
 		boolean game = true;
 		while(game){
 			if(!board.end()){
-				String winner = board.winner();
-				System.out.println("Game is over, winner is: " + winner);
-				if(winner != null){
-					game = false;
-				}
+				System.out.println("Game is over, winner is: " + board.winner());
+				System.out.println("Do you want to play again? (y/n)");
+				String ans = scan.next();
+				///
 			}
 			else{
 				System.out.println();
