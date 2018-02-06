@@ -333,16 +333,12 @@ public class Othelloboard {
 			int x = (cordinate - y) / 10;
 			legalMoves[y][x] = true;
 		}
-
 	}
 	public void printBoard(){
 		System.out.print("  ");
 		for(int i = 1; i < 9 ; i++){
 			System.out.print(i + " ");
 		}
-		
-		
-		
 		for(int r = 0; r <= 7 ; r++){
 			System.out.println();
 			System.out.print(r + 1 +" ");
