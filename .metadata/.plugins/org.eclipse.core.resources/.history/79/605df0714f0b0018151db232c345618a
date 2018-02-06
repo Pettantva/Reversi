@@ -18,7 +18,7 @@ public class Othelloboard {
 		this.legalMoves = new boolean[8][8]; // sätter upp legalmoves
 		setBoard();
 		this.legalMovesCounter = 0;
-		setLegalMoves();
+		//setLegalMoves();
 	}
 
 	// sätter upp bordet. Alla tomma förutom de två i mitten.
