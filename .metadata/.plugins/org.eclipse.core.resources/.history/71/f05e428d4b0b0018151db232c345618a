@@ -315,12 +315,10 @@ public class Othelloboard {
 		ArrayList neighbors = new ArrayList<Integer>();
 		for (int xn = x - 1; xn <= x + 1; xn++) { 
 			if (xn >= 0 && xn <= 7) {
-				for (int yn = y - 1 ; yn <= y + 1; yn++) { 
+				for (int yn = y + 1; yn <= y + 1; yn++) { 
 					if (yn >= 0 && yn <= 7) {
-						if (!(xn == x && yn == y) && (board[yn][xn]) != 0) {
-							int xc = 10 * xn;
-							
-							neighbors.add(xc + yn); 
+						if (xn != x && yn != y && Math.abs(board[y][x]) > 0) {
+							neighbors.add(10 * x + y); 
 						}								
 					}
 				}

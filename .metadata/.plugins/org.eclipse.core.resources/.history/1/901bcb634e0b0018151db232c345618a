@@ -318,9 +318,7 @@ public class Othelloboard {
 				for (int yn = y - 1 ; yn <= y + 1; yn++) { 
 					if (yn >= 0 && yn <= 7) {
 						if (!(xn == x && yn == y) && (board[yn][xn]) != 0) {
-							int xc = 10 * xn;
-							
-							neighbors.add(xc + yn); 
+							neighbors.add(10 * xn + yn); 
 						}								
 					}
 				}
