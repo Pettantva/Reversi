@@ -9,14 +9,14 @@ public class Main {
 		board.printBoard();
 		boolean game = true;
 		while(game){
-			if(!board.finnished()){
+			/*if(!board.end()){
 				String winner = board.winner();
 				System.out.println("Game is over, winner is: " + winner);
 				if(winner != null){
 					game = false;
 				}
-			}
-			else{
+			}*/
+			//else{
 				System.out.println();
 				System.out.println(board.playersTurn() + " is up");
 				System.out.println("Where do you want to put the next?");
@@ -32,7 +32,7 @@ public class Main {
 				else{
 					System.out.println("Illegal move, try again");
 				}
-			}
+			//}
 		}
 	}
 }
