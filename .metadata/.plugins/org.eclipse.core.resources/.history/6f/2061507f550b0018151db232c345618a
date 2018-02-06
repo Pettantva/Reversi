@@ -334,9 +334,8 @@ public class Othelloboard {
 		int count = 0;
 		for (int x = 0; x <= 7; x++) {
 			for (int y = 0; y <= 7; y++) {
-				
+				int color = playersTurn;
 				if (board[y][x] == 0) {
-					int color = playersTurn;
 					ArrayList neighbors = CheckNeighbors(x, y);
 					for (int i = 0; i < neighbors.size(); i++) {
 						int cordinate = (int) neighbors.get(i);
@@ -366,11 +365,6 @@ public class Othelloboard {
 	}
 
 	private void updateLegalMoves() {
-		for (int i = 0; i < 8; i++) {
-			for (int j = 0; j < 8; j++) {
-				this.legalMoves[i][j] = false;
-			}
-		}
 		ArrayList legal = LegalMoves();
 		this.legalMovesCounter = 0;
 		for(int i = 0; i < legal.size() ; i++){
