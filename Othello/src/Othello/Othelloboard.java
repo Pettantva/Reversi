@@ -9,12 +9,15 @@ public class Othelloboard {
 									// nuvarande spelare
 	private int blackPoints;
 	private int whitePoints;
+	private int counter;
+	private int legalMovesCounter;
 
 	public Othelloboard() {
-		this.board = new int[8][8]; // nytt tomt bord
-		setBoard();
+		this.board = new int[8][8]; // nytt tomt bord	
 		this.playersTurn = 1; // svart börjar
 		this.legalMoves = new boolean[8][8]; // sätter upp legalmoves
+		setBoard();
+		this.legalMovesCounter = 0;
 		setLegalMoves();
 	}
 
@@ -29,6 +32,7 @@ public class Othelloboard {
 		this.board[4][4] = -1;
 		this.board[3][4] = 1;
 		this.board[4][3] = 1;
+		this.counter = 4;
 		this.blackPoints = 2;
 		this.whitePoints = 2;
 
@@ -55,12 +59,14 @@ public class Othelloboard {
 
 	// metod som lägger ny bit
 	public boolean put(int i, int j) {
-		if (this.legalMoves[i][j] == true) {
+		if (this.legalMoves[i][j]) {
+		//if (true) {
 			this.board[i][j] = this.playersTurn;
 			updateBoard(i, j);
 			changeTurn();
-			updateLegalMoves();
+			//updateLegalMoves();
 			updatePoints();
+			this.counter++;
 			return true;
 		} else {
 			return false;
@@ -146,8 +152,8 @@ public class Othelloboard {
 					}
 					else if(val == this.playersTurn){
 						updatedBoard = updateDiagHlLr(updatedBoard, i, j, f);
-						f++;
 					}
+					f++;
 					a++;
 					b++;
 				}
@@ -166,8 +172,8 @@ public class Othelloboard {
 					}
 					else if(val == this.playersTurn){
 						updatedBoard = updateDiagHlLr(updatedBoard, a, b, f);
-						f++;
 					}
+					f++;
 					a--;
 					b--;
 				}
@@ -185,9 +191,9 @@ public class Othelloboard {
 						cont = false;
 					}
 					else if(val == this.playersTurn){
-						updatedBoard = updateDiagHlLr(updatedBoard, a, b, f);
-						f++;
+						updatedBoard = updateDiagHrLl(updatedBoard, a, b, f);
 					}
+					f++;
 					a--;
 					b++;
 				}
@@ -205,9 +211,9 @@ public class Othelloboard {
 						cont = false;
 					}
 					else if(val == this.playersTurn){
-						updatedBoard = updateDiagHlLr(updatedBoard, i, j, f);
-						f++;
+						updatedBoard = updateDiagHrLl(updatedBoard, i, j, f);
 					}
+					f++;
 					a++;
 					b--;
 				}
@@ -272,12 +278,42 @@ public class Othelloboard {
 		this.blackPoints = black;
 		this.whitePoints = white;
 	}
+	
+	public String playersTurn(){
+		if(playersTurn == 1){
+			return "Black";
+		}
+		else{
+			return "White";
+		}
+	}
+	
+	public boolean end(){
+		if(this.counter > 63 || legalMovesCounter == 0){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
+	public String winner(){
+		if(this.blackPoints > this.whitePoints){
+			return "Black";
+		}
+		else if(this.blackPoints < this.whitePoints){
+			return "White";
+		}
+		else{
+			return null;
+		}
+	}
 
 	// metod som uppdaterar legal moves
 
 	private ArrayList CheckNeighbors(int x, int y) {
 		ArrayList neighbors = new ArrayList<Integer>();
-		for (int xn = x - 1; xn <= x - 2; xn++) { 
+		for (int xn = x - 1; xn <= x + 1; xn++) { 
 			if (xn >= 0 && xn <= 7) {
 				for (int yn = y + 1; yn <= y + 1; yn++) { 
 					if (yn >= 0 && yn <= 7) {
@@ -327,21 +363,23 @@ public class Othelloboard {
 
 	private void updateLegalMoves() {
 		ArrayList legal = LegalMoves();
+		this.legalMovesCounter = 0;
 		for(int i = 0; i < legal.size() ; i++){
 			int cordinate = (int) legal.get(i);
 			int y = cordinate % 10;
 			int x = (cordinate - y) / 10;
 			legalMoves[y][x] = true;
+			this.legalMovesCounter++;
 		}
 	}
 	public void printBoard(){
 		System.out.print("  ");
-		for(int i = 1; i < 9 ; i++){
+		for(int i = 0; i < 8 ; i++){
 			System.out.print(i + " ");
 		}
 		for(int r = 0; r <= 7 ; r++){
 			System.out.println();
-			System.out.print(r + 1 +" ");
+			System.out.print(r +" ");
 			for(int c = 0; c <= 7; c++){
 				if(board[r][c] == -1){
 					System.out.print("\u25E6" + " ");
@@ -350,7 +388,13 @@ public class Othelloboard {
 					System.out.print("\u2022" + " ");
 				}
 				else{
-					System.out.print("-" +" ");
+					if(legalMoves[r][c]){
+						System.out.print("x" +" ");
+					}
+					else{
+						System.out.print("-" +" ");						
+					}
+
 				}
 			}
 		}

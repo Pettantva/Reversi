@@ -8,9 +8,11 @@ public class Minimax {
 	private Othelloboard board;
 	private int alpha;
 	private int beta;
+	
 	public Minimax(){
 		
 	}
+	
 	public int alphabeta(){
 		depth = 3;
 		maximize = true;

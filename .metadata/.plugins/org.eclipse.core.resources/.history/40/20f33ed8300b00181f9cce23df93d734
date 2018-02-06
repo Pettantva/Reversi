@@ -1,0 +1,16 @@
+package Othello;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Othelloboard board = new Othelloboard();
+		board.printBoard();
+		System.out.println();
+		board.put(2, 3);
+		board.printBoard();
+		System.out.println();
+		board.put(2, 2);
+		board.printBoard();
+		System.out.println();
+	}
+}

@@ -1,0 +1,23 @@
+package Othello;
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);  
+		Othelloboard board = new Othelloboard();
+		board.printBoard();
+		while(true){
+			System.out.println(board.playersTurn() + " is up");
+			System.out.println("Where do you want to put the next?");
+			System.out.print("Row: ");
+			int i = scan.nextInt();
+			System.out.print("Column: ");
+			int j = scan.nextInt();
+			System.out.println();
+			board.put(i, j);
+			board.printBoard();
+			
+		}
+	}
+}
