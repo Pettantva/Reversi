@@ -10,7 +10,7 @@ public class Main {
 		
 		boolean game = true;
 		while(game){
-			if(board.finnished()){
+			if(!board.finnished()){
 				String winner = board.winner();
 				System.out.println("Game is over, winner is: " + winner);
 				if(winner != null){

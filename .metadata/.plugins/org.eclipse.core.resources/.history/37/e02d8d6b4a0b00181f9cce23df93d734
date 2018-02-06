@@ -7,10 +7,9 @@ public class Main {
 		Scanner scan = new Scanner(System.in);  
 		Othelloboard board = new Othelloboard();
 		board.printBoard();
-		
 		boolean game = true;
 		while(game){
-			if(board.finnished()){
+			if(!board.end()){
 				String winner = board.winner();
 				System.out.println("Game is over, winner is: " + winner);
 				if(winner != null){

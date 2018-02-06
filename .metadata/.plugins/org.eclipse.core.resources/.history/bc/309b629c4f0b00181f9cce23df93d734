@@ -20,7 +20,7 @@ public class Othelloboard {
 		this.blackPoints = 2;
 		this.whitePoints = 2;
 		this.legalMovesCounter = 0;
-		setLegalMoves();
+		//setLegalMoves();
 	}
 
 	// sätter upp bordet. Alla tomma förutom de två i mitten.
@@ -59,12 +59,12 @@ public class Othelloboard {
 
 	// metod som lägger ny bit
 	public boolean put(int i, int j) {
-		if (this.legalMoves[i][j]) {
-		//if (true) {
+		//if (this.legalMoves[i][j]) {
+		if (true) {
 			this.board[i][j] = this.playersTurn;
 			updateBoard(i, j);
 			changeTurn();
-			updateLegalMoves();
+			//updateLegalMoves();
 			updatePoints();
 			this.counter++;
 			return true;
