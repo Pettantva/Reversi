@@ -291,7 +291,7 @@ public class Othelloboard {
 		return neighbors;
 	}
 
-	public ArrayList LegalMoves() {
+	private ArrayList LegalMoves() {
 		ArrayList legal = new ArrayList<Integer>();
 		int count = 0;
 		for (int x = 0; x <= 7; x++) {
