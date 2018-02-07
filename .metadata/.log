@@ -1546,6 +1546,7 @@ java.lang.NullPointerException
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1515)
 >>>>>>> 3dcb18a748036bf41d74270b921248ef51c99b93
 
+<<<<<<< HEAD
 !ENTRY org.eclipse.recommenders.rcp 2 15 2018-02-06 19:24:30.061
 !MESSAGE Failed to parse news feed
 !STACK 0
@@ -1643,3 +1644,17 @@ java.util.ConcurrentModificationException
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:669)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:608)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1515)
+=======
+!ENTRY org.eclipse.core.jobs 4 2 2018-02-06 16:12:50.685
+!MESSAGE An internal error occurred during: "Periodic workspace save.".
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 5, new: 3). Location: /Users/ludvigpettersson/Documents/GitHub/Reversi/.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources
+	at org.eclipse.core.runtime.Assert.isLegal(Assert.java:63)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1622)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1283)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1275)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1252)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1163)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:52)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+>>>>>>> e568472786e98ca83ab2034f728c37b9648f9070
