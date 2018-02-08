@@ -1,0 +1,53 @@
+package Othello;
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);  
+		Othelloboard board = new Othelloboard();
+		board.printBoard();
+		board.CheckNeighbors(0, 0);
+		
+		boolean game = true;
+		while(game){
+			if(board.finnished()){
+				String winner = board.winner();
+				System.out.println("Game is over, winner is: " + winner);
+				if(winner != null){
+					game = false;
+				}
+			}
+			else{
+				System.out.println();
+				System.out.println("Black score: " + board.blackScore());
+				System.out.println("White score: " + board.whiteScore());
+				System.out.println();
+				System.out.println(board.playersTurn() + " is up");
+				System.out.println("Where do you want to put the next brick?");
+				System.out.print("Row: ");
+				int i = scan.nextInt();
+				System.out.print("Column: ");
+				int j = scan.nextInt();
+				System.out.println();
+				if(i < 0 || i > 7 || j < 0 || j > 7){
+					board.printBoard();
+					System.out.println();
+					System.out.print("Can't put a brick outside of the board, try again");
+				}
+				else{
+					boolean legal = board.put(i, j);
+					if(legal){
+						board.printBoard();
+					}
+					else{
+						board.printBoard();
+						System.out.println();
+						System.out.print("Illegal move. Can only put bricks on the X's, try again");
+					}
+				}
+				
+			}
+		}
+	}
+}

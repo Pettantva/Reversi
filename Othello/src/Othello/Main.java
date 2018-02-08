@@ -13,27 +13,40 @@ public class Main {
 		while(game){
 			if(board.finnished()){
 				String winner = board.winner();
-				System.out.println("Game is over, winner is: " + winner);
+				System.out.println("Winner winner chicken dinner. Game is over, winner is: " + board.winner());
 				if(winner != null){
 					game = false;
 				}
 			}
 			else{
 				System.out.println();
+				System.out.println("Black score: " + board.blackScore());
+				System.out.println("White score: " + board.whiteScore());
+				System.out.println();
 				System.out.println(board.playersTurn() + " is up");
-				System.out.println("Where do you want to put the next?");
+				System.out.println("Where do you want to put the next brick?");
 				System.out.print("Row: ");
 				int i = scan.nextInt();
 				System.out.print("Column: ");
 				int j = scan.nextInt();
 				System.out.println();
-				boolean legal = board.put(i, j);
-				if(legal){
+				if(i < 0 || i > 7 || j < 0 || j > 7){
 					board.printBoard();
+					System.out.println();
+					System.out.print("Can't put a brick outside of the board, try again");
 				}
 				else{
-					System.out.println("Illegal move, try again");
+					boolean legal = board.put(i, j);
+					if(legal){
+						board.printBoard();
+					}
+					else{
+						board.printBoard();
+						System.out.println();
+						System.out.print("Illegal move. Can only put bricks on the X's, try again");
+					}
 				}
+				
 			}
 		}
 	}
