@@ -34,9 +34,6 @@ public class Othelloboard {
 		this.board[4][4] = -1;
 		this.board[3][4] = 1;
 		this.board[4][3] = 1;
-		
-		
-		
 		this.counter = 4;
 
 	}
@@ -352,16 +349,17 @@ public class Othelloboard {
 							count++;
 							xn = xn + xdir;
 							yn = yn + ydir;
-							if ((xn < 0 || xn > 7 || yn < 0 || yn > 7)) {
+							if (xn < 0 && xn > 7 && yn < 0 && yn > 7) {
 								break;
 							}
+							while(xn < 0 || yn < 0 ){
+								int laser = 0;
+							}
 						}
-						if(xn >= 0 && xn <= 7 && yn >= 0 && yn <= 7){
 						if (board[yn][xn] == color && count > 0 && board[yn][xn] != 0) {
 							legal.add(x * 10 + y);
 							count = 0;
 							break;
-						}
 						}
 					}
 				}

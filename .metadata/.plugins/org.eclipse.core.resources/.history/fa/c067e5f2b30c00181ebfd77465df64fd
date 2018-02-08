@@ -1,0 +1,20 @@
+package test;
+
+public class Main {
+
+	public static void main(String[] args) {
+		int i = 7;
+		while(true){
+		while(true){
+			if(i == 9){
+				break;
+			}
+			i++;
+		}
+		if(true){
+			break;
+		}
+		}
+	}
+
+}

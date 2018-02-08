@@ -30,12 +30,19 @@ public class Othelloboard {
 				this.board[i][j] = 0;
 			}
 		}
-		this.board[3][3] = -1;
+		/*this.board[3][3] = -1;
 		this.board[4][4] = -1;
 		this.board[3][4] = 1;
 		this.board[4][3] = 1;
-		
-		
+		*/
+		this.board[1][2] = 1;
+		this.board[2][2] = 1;
+		this.board[3][1] = -1;
+		this.board[3][2] = -1;
+		this.board[3][3] = -1;
+		this.board[3][4] = 1;
+		this.board[4][3] = 1;
+		this.board[4][4] = -1;
 		
 		this.counter = 4;
 
@@ -348,13 +355,16 @@ public class Othelloboard {
 						int xdir = xn - x;
 						int ydir = yn - y;
 						count = 0;
+						boolean out = false;
+						while(!out){
 						while (board[yn][xn] != color && board[yn][xn] != 0) {
 							count++;
 							xn = xn + xdir;
 							yn = yn + ydir;
-							if ((xn < 0 || xn > 7 || yn < 0 || yn > 7)) {
-								break;
+							if ((xn < 0 && xn > 7 && yn < 0 && yn > 7)) {
+								out = true;
 							}
+						}
 						}
 						if(xn >= 0 && xn <= 7 && yn >= 0 && yn <= 7){
 						if (board[yn][xn] == color && count > 0 && board[yn][xn] != 0) {
