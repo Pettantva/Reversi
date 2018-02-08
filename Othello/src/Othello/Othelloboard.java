@@ -315,11 +315,10 @@ public class Othelloboard {
 		ArrayList neighbors = new ArrayList<Integer>();
 		for (int xn = x - 1; xn <= x + 1; xn++) { 
 			if (xn >= 0 && xn <= 7) {
-				for (int yn = y - 1 ; yn <= y + 1; yn++) { 
+				for (int yn = y - 1; yn <= y + 1; yn++) { 
 					if (yn >= 0 && yn <= 7) {
 						if (!(xn == x && yn == y) && (board[yn][xn]) != 0) {
 							int xc = 10 * xn;
-							
 							neighbors.add(xc + yn); 
 						}								
 					}
@@ -334,7 +333,6 @@ public class Othelloboard {
 		int count = 0;
 		for (int x = 0; x <= 7; x++) {
 			for (int y = 0; y <= 7; y++) {
-				
 				if (board[y][x] == 0) {
 					int color = playersTurn;
 					ArrayList neighbors = CheckNeighbors(x, y);
@@ -357,7 +355,7 @@ public class Othelloboard {
 							legal.add(x * 10 + y);
 							count = 0;
 							break;
-						}
+						}					
 					}
 				}
 			}
