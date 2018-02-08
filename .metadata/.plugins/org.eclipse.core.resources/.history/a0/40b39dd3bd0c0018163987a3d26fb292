@@ -291,14 +291,6 @@ public class Othelloboard {
 		}
 	}
 	
-	public int whiteScore(){
-		return this.whitePoints;
-	}
-	
-	public int blackScore(){
-		return this.blackPoints;
-	}
-	
 	public boolean finnished(){
 		if(this.counter > 63 || legalMovesCounter == 0){
 			return true;

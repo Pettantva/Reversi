@@ -22,7 +22,6 @@ public class Main {
 				System.out.println();
 				System.out.println("Black score: " + board.blackScore());
 				System.out.println("White score: " + board.whiteScore());
-				System.out.println();
 				System.out.println(board.playersTurn() + " is up");
 				System.out.println("Where do you want to put the next brick?");
 				System.out.print("Row: ");
@@ -31,9 +30,7 @@ public class Main {
 				int j = scan.nextInt();
 				System.out.println();
 				if(i < 0 || i > 7 || j < 0 || j > 7){
-					board.printBoard();
-					System.out.println();
-					System.out.print("Can't put a brick outside of the board, try again");
+					System.out.println("Can't put a brick there, try again");
 				}
 				else{
 					boolean legal = board.put(i, j);
@@ -41,9 +38,8 @@ public class Main {
 						board.printBoard();
 					}
 					else{
+						System.out.println("Illegal move, try again");
 						board.printBoard();
-						System.out.println();
-						System.out.print("Illegal move. Can only put bricks on the X's, try again");
 					}
 				}
 				

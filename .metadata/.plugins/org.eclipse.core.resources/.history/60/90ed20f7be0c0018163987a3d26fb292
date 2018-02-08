@@ -22,7 +22,6 @@ public class Main {
 				System.out.println();
 				System.out.println("Black score: " + board.blackScore());
 				System.out.println("White score: " + board.whiteScore());
-				System.out.println();
 				System.out.println(board.playersTurn() + " is up");
 				System.out.println("Where do you want to put the next brick?");
 				System.out.print("Row: ");
