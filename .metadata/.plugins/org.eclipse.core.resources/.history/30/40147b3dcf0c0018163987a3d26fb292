@@ -13,7 +13,7 @@ public class Main {
 		while(game){
 			if(board.finnished()){
 				String winner = board.winner();
-				System.out.println("Winner winner chicken dinner. Game is over, winner is: " + board.winner());
+				System.out.println("Game is over, winner is: " + winner);
 				if(winner != null){
 					game = false;
 				}

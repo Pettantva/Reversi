@@ -13,7 +13,7 @@ public class Main {
 		while(game){
 			if(board.finnished()){
 				String winner = board.winner();
-				System.out.println("Winner winner chicken dinner. Game is over, winner is: " + board.winner());
+				System.out.println("Game is over, winner is: " + winner);
 				if(winner != null){
 					game = false;
 				}
@@ -26,9 +26,16 @@ public class Main {
 				System.out.println(board.playersTurn() + " is up");
 				System.out.println("Where do you want to put the next brick?");
 				System.out.print("Row: ");
-				int i = scan.nextInt();
+				int i = -1;
+				try {
+				    i = scan.nextInt();
+				}
+				catch (InputMismatchException a) {
+				    System.out.print("Error, enter integers between 0 and 7 only");
+				}
 				System.out.print("Column: ");
-				int j = scan.nextInt();
+				int j = -1;
+				j = scan.nextInt();
 				System.out.println();
 				if(i < 0 || i > 7 || j < 0 || j > 7){
 					board.printBoard();
