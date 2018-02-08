@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 INDEX VERSION 1.127+/Users/ludvigpettersson/Documents/GitHub/Reversi/.metadata/.plugins/org.eclipse.jdt.core
 3856011051.index
 2337468814.index
@@ -17,3 +18,7 @@ INDEX VERSION 1.127+/Users/ludvigpettersson/Documents/GitHub/Reversi/.metadata/.
 4236265088.index
 1462576478.index
 257892957.index
+=======
+INDEX VERSION 1.127+/Users/Dalle/Documents/GitHub/Reversi/.metadata/.plugins/org.eclipse.jdt.core
+2545333327.index
+>>>>>>> 2764ede38a1bf77a67c37fdfdce6a60d7698421d
