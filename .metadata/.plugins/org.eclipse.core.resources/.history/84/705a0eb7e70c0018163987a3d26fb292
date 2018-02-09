@@ -4,18 +4,11 @@ import java.util.*;
 public class Main {
 
 	public static void main(String[] args) {
-		Scanner scan = new Scanner(System.in);
+		Scanner scan = new Scanner(System.in);  
 		Othelloboard board = new Othelloboard();
 		board.printBoard();
-<<<<<<< HEAD
-		/*
-		Minimax pettbot = new Minimax(board);
-		System.out.println(pettbot.alphabeta());
-		*/
+		board.CheckNeighbors(0, 0);
 		
-		
-=======
->>>>>>> 3d8aecb5793da3fc9fc71c65485e29b9ad7020a9
 		boolean game = true;
 		while(game){
 			if(board.finnished()){
@@ -23,37 +16,17 @@ public class Main {
 				game = false;
 			}
 			else{
-<<<<<<< HEAD
-				System.out.println();
-				System.out.println("Black score: " + board.blackScore());
-				System.out.println("White score: " + board.whiteScore());
-				System.out.println();
-				System.out.println(board.playersTurn() + " is up");
-				System.out.println("Where do you want to put the next brick?");
-				
-				System.out.print("Row: ");
-				int i = scan.nextInt();
-				System.out.print("Column: ");
-				int j = scan.nextInt();
-				System.out.println();
-				
-				if(i < 0 || i > 7 || j < 0 || j > 7){
-					board.printBoard();
-=======
-				if(board.playersTurn() == "Black"){
->>>>>>> 3d8aecb5793da3fc9fc71c65485e29b9ad7020a9
+				if(board.playersTurn() == "White"){
 					System.out.println();
 					System.out.println("Black score: " + board.blackScore());
 					System.out.println("White score: " + board.whiteScore());
 					System.out.println();
 					System.out.println(board.playersTurn() + " is up");
 					System.out.println("Where do you want to put the next brick?");
-					P1AI P1I = new P1AI(board, 3, -1000, 1000, true);
+					P1AI P1I = new P1AI(board, 1, -1000, 1000, true);
 					P1I.alphabeta();
 					boolean legal = board.put(P1I.getRow(), P1I.getCol());
 					if(legal){
-						System.out.println("Row: " + P1I.getRow());
-						System.out.println("Column: " + P1I.getCol());
 						board.printBoard();
 					}
 				}
@@ -88,6 +61,5 @@ public class Main {
 				}
 			}
 		}
-		
 	}
 }

@@ -79,9 +79,6 @@ public class Othelloboard {
 			return false;
 		}
 	}
-	public boolean legal(int i, int j){
-		return this.legalMoves[i][j];
-	}
 	
 	public int numberOfLegalMoves(){
 		int number = 0;
@@ -443,36 +440,12 @@ public class Othelloboard {
 					else{
 						System.out.print("-" +" ");						
 					}
+
 				}
 			}
 		}
 	}
-	
-	private int[][] getBoard(){
-		return this.board;
-	}
-	
-	private int getCounter(){
-		return this.counter;
-	}
-	
-	public void copyBoard(Othelloboard b){
-		int [][] newB = b.getBoard();
-		for(int i = 0; i < 7; i++){
-			for(int j = 0; j < 7; j++){
-				this.board[i][j] = newB[i][j];
-			}
-		}
-		updateLegalMoves();
-		updatePoints();
-		this.counter = b.getCounter();
-		if(b.playersTurn() == "White"){
-			this.playersTurn = -1;
-		}
-		else{
-			this.playersTurn = 1;
-		}
-		
-	}
+
 	// metod som räknar ut hur nya matrisen ser ut vid
+
 }
