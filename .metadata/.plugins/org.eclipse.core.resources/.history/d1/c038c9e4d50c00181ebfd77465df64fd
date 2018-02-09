@@ -9,19 +9,19 @@ public class Minimax {
 	private int alpha;
 	private int beta;
 	
-	public Minimax(Othelloboard board){
-		this.board = board;
+	public Minimax(){
+		
 	}
 	
 	public int alphabeta(){
-		depth = 1;
+		depth = 3;
 		maximize = true;
 		alpha = -1000;
 		beta = 1000;
 		int[] lista = new int[2];
 		lista[0] = 0;
 		lista[0] = 0;
-		ArrayList legalmoves = this.board.LegalMoves();
+		ArrayList legalmoves = board.LegalMoves();
 		for(int i = 0; i < legalmoves.size(); i++){
 			int value = alphaBeta(depth, (int)legalmoves.get(i), board, alpha, beta, maximize );
 			if(lista[1] < value){
@@ -47,28 +47,25 @@ public class Minimax {
 		if(maximize){
 			int value = -1000;
 			for(int i = 0; i < legalmoves.size(); i++){
-				value = Math.max(value, alphaBeta(depth -1, (int)legalmoves.get(i), board, alpha, beta, false));
+				value = Math.max(-1000, alphaBeta(depth -1, (int)legalmoves.get(i), board, alpha, beta, false));
 				alpha = Math.max(alpha, value);
 				if(beta <= alpha){
 					break;
 				}
 				return value;
 			}
-			return value;
 		}
 		else{
 			int value = 1000;
 			for(int j = 0; j < legalmoves.size(); j++){
-				value = Math.min(value, alphaBeta(depth -1, (int)legalmoves.get(j), board, alpha, beta, true));
+				value = Math.min(-1000, alphaBeta(depth -1, (int)legalmoves.get(j), board, alpha, beta, true));
 				beta = Math.min(beta, value);
 				if(beta <= alpha){
 					break;
 				}
 				return value;
 			}
-			return value;
 		}
-		
 	}
 
 }

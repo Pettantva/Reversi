@@ -14,7 +14,7 @@ public class Minimax {
 	}
 	
 	public int alphabeta(){
-		depth = 1;
+		depth = 2;
 		maximize = true;
 		alpha = -1000;
 		beta = 1000;

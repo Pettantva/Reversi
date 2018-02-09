@@ -29,7 +29,11 @@ public class Main {
 				System.out.println();
 				System.out.println(board.playersTurn() + " is up");
 				System.out.println("Where do you want to put the next brick?");
-				
+				Othelloboard clone = new Othelloboard();
+				clone = board;
+				Minimax pettbot = new Minimax(clone);
+				board.printBoard();
+				System.out.println("Best move is: "+ pettbot.alphabeta());
 				System.out.print("Row: ");
 				int i = scan.nextInt();
 				System.out.print("Column: ");

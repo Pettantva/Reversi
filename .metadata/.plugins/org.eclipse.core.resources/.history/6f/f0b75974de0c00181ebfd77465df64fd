@@ -14,7 +14,7 @@ public class Minimax {
 	}
 	
 	public int alphabeta(){
-		depth = 1;
+		depth = 2;
 		maximize = true;
 		alpha = -1000;
 		beta = 1000;
@@ -47,7 +47,7 @@ public class Minimax {
 		if(maximize){
 			int value = -1000;
 			for(int i = 0; i < legalmoves.size(); i++){
-				value = Math.max(value, alphaBeta(depth -1, (int)legalmoves.get(i), board, alpha, beta, false));
+				value = Math.max(-1000, alphaBeta(depth -1, (int)legalmoves.get(i), board, alpha, beta, false));
 				alpha = Math.max(alpha, value);
 				if(beta <= alpha){
 					break;
@@ -59,7 +59,7 @@ public class Minimax {
 		else{
 			int value = 1000;
 			for(int j = 0; j < legalmoves.size(); j++){
-				value = Math.min(value, alphaBeta(depth -1, (int)legalmoves.get(j), board, alpha, beta, true));
+				value = Math.min(-1000, alphaBeta(depth -1, (int)legalmoves.get(j), board, alpha, beta, true));
 				beta = Math.min(beta, value);
 				if(beta <= alpha){
 					break;

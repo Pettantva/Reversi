@@ -7,12 +7,10 @@ public class Main {
 		Scanner scan = new Scanner(System.in);  
 		Othelloboard board = new Othelloboard();
 		board.printBoard();
-		/*
-		Minimax pettbot = new Minimax(board);
-		System.out.println(pettbot.alphabeta());
+		/*System.out.println(board.LegalMoves().get(0));
+		Minimax ai = new Minimax();
+		System.out.println(ai.alphabeta());
 		*/
-		
-		
 		boolean game = true;
 		while(game){
 			if(board.finnished()){
@@ -29,13 +27,11 @@ public class Main {
 				System.out.println();
 				System.out.println(board.playersTurn() + " is up");
 				System.out.println("Where do you want to put the next brick?");
-				
 				System.out.print("Row: ");
 				int i = scan.nextInt();
 				System.out.print("Column: ");
 				int j = scan.nextInt();
 				System.out.println();
-				
 				if(i < 0 || i > 7 || j < 0 || j > 7){
 					board.printBoard();
 					System.out.println();
@@ -55,6 +51,5 @@ public class Main {
 				
 			}
 		}
-		
 	}
 }

@@ -29,13 +29,13 @@ public class Main {
 				System.out.println();
 				System.out.println(board.playersTurn() + " is up");
 				System.out.println("Where do you want to put the next brick?");
-				
 				System.out.print("Row: ");
 				int i = scan.nextInt();
 				System.out.print("Column: ");
 				int j = scan.nextInt();
 				System.out.println();
-				
+				Minimax pettbot = new Minimax(board);
+				System.out.println("Best move is: "+ pettbot.alphabeta());
 				if(i < 0 || i > 7 || j < 0 || j > 7){
 					board.printBoard();
 					System.out.println();
