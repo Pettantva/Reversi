@@ -1,0 +1,92 @@
+package Othello;
+
+public class P1AI {
+	private int depth;
+	private boolean maximize;
+	private Othelloboard board;
+	private int alpha;
+	private int beta;
+	private int r;
+	private int c;
+	
+	public P1AI(Othelloboard board, int depth, int alpha, int beta, boolean maximize){
+			this.board = board;
+			this.depth = depth;
+			this.alpha = alpha;
+			this.beta = beta;
+			this.maximize = maximize;
+	}
+	
+	public int alphabeta(){
+		if(depth == 0 || board.count() == 64){
+			return this.board.points(); 
+		}
+		else if(maximize){
+			int v = -1000;
+			Othelloboard[] children = new Othelloboard[this.board.numberOfLegalMoves()];
+			int c = 0;
+			for(int i = 0; i < 7; i++){
+				for(int j = 0; j < 7; j++){
+					if(board.legal(i, j)){
+						Othelloboard childBoard = new Othelloboard(); 
+						childBoard.copyBoard(board);
+						children[c] = childBoard;
+						children[c].put(i, j);
+						this.r = i;
+						this.c = j;
+						P1AI child = new P1AI(children[c], this.depth - 1, this.alpha, this.beta, false);
+						int childmax = child.alphabeta();
+						c++;
+						if(childmax > v){
+							v = childmax;
+						}
+						if(v > this.alpha){
+							this.alpha = v;
+						}
+						if(alpha > beta){
+							i = 8;
+							j = 8;
+						}
+					}
+				}
+			}
+			return v;
+		}
+		else{
+			int v = 1000;
+			Othelloboard[] children = new Othelloboard[this.board.numberOfLegalMoves()];
+			int c = 0;
+			for(int i = 0; i < 7; i++){
+				for(int j = 0; j < 7; j++){
+					if(board.legal(i, j)){
+						Othelloboard childBoard = new Othelloboard(); 
+						childBoard.copyBoard(board);
+						children[c] = childBoard;
+						children[c].put(i, j);
+						P1AI child = new P1AI(children[c], this.depth - 1, this.alpha, this.beta, true);
+						int childmin = child.alphabeta();
+						c++;
+						if(childmin < v){
+							v = childmin;
+						}
+						if(v < this.beta){
+							this.beta = v;
+						}
+						if(alpha > beta){
+							i = 8;
+							j = 8;
+						}
+					}
+				}
+			}
+			return v;
+		}
+	}
+	
+	public int getRow(){
+		return this.r;
+	}
+	public int getCol(){
+		return this.c;
+	}
+}

@@ -21,7 +21,7 @@ public class Main {
 					System.out.println();
 					System.out.println(board.playersTurn() + " is up");
 					System.out.println("Where do you want to put the next brick?");
-					P1AI P1I = new P1AI(board, 3, -1000, 1000, true);
+					P1AI P1I = new P1AI(board, 10, -1000, 1000, true);
 					P1I.alphabeta();
 					boolean legal = board.put(P1I.getRow(), P1I.getCol());
 					if(legal){

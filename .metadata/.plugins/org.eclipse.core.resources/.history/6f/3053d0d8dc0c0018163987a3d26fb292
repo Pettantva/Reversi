@@ -1,0 +1,37 @@
+package Othello;
+
+public class P1AI {
+	private int depth;
+	private boolean maximize;
+	private Othelloboard board;
+	private int alpha;
+	private int beta;
+		
+	public P1AI(Othelloboard board, int depth, int alpha, int beta, boolean maximize){
+			this.board = board;
+			this.depth = depth;
+			this.alpha = alpha;
+			this.beta = beta;
+			this.maximize = maximize;
+	}
+	
+	public int alphabeta(){
+		if(depth == 0 || board.count() == 64){
+			board.points();
+		}
+		if(maximize){
+			int v = -1000;
+			for(int i = 0; i < board.numberOfLegalMoves(); i++){
+				
+				board.put(i, j);
+				P1AI child = new P1AI()
+				if(v >= )
+			}
+		}
+		else{
+			int v = 1000;
+			for(int i = 0; i < board.numberOfLegalMoves(); i ++){
+				}
+			}
+	}
+}

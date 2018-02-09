@@ -4,9 +4,11 @@ import java.util.*;
 public class Main {
 
 	public static void main(String[] args) {
-		Scanner scan = new Scanner(System.in);
+		Scanner scan = new Scanner(System.in);  
 		Othelloboard board = new Othelloboard();
 		board.printBoard();
+		board.CheckNeighbors(0, 0);
+		
 		boolean game = true;
 		while(game){
 			if(board.finnished()){
@@ -14,14 +16,14 @@ public class Main {
 				game = false;
 			}
 			else{
-				if(board.playersTurn() == "Black"){
+				if(board.playersTurn() == "White"){
 					System.out.println();
 					System.out.println("Black score: " + board.blackScore());
 					System.out.println("White score: " + board.whiteScore());
 					System.out.println();
 					System.out.println(board.playersTurn() + " is up");
 					System.out.println("Where do you want to put the next brick?");
-					P1AI P1I = new P1AI(board, 3, -1000, 1000, true);
+					P1AI P1I = new P1AI(board, 15, -1000, 1000, true);
 					P1I.alphabeta();
 					boolean legal = board.put(P1I.getRow(), P1I.getCol());
 					if(legal){
